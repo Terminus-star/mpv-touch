@@ -2,6 +2,11 @@
 -- https://github.com/christoph-heinrich/mpv-touch-gestures
 --
 -- Touch gestures for mpv
+--
+-- Modified 2026-10-23 by Seifelden Abdelmonem: the left-half vertical swipe changes the screen brightness
+-- instead of the playback speed (backends kde, logind and mpv; options brightness_min and
+-- brightness_backend). Licensed under the GNU General Public License version 2, like the original;
+-- see LICENSES/GPL-2.0-only.txt and THIRD_PARTY_NOTICES.md.
 
 local assdraw = require('mp.assdraw')
 local options = require('mp.options')

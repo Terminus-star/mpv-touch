@@ -193,7 +193,9 @@ Taps inside the margins in `config/script-opts/pointer-event.conf` (top 50 px, b
 | [uosc](https://github.com/tomasklaen/uosc) | `12b918fcbcae56ded0e073a965d769bb0c5d900e` (2026-08-30) | `src/uosc`, `uosc.conf`, the two fonts |
 
 mpv scripts run with your user's permissions. The two gesture scripts were read in full
-and use only mpv's own API. For uosc I searched for process spawning and network use.
+and, as copied, use only mpv's own API. My later change to `touch-gestures.lua` (the brightness
+swipe) does run `busctl` and read `/sys/class/backlight`, to reach KDE's brightness service or
+systemd-logind. For uosc I searched for process spawning and network use.
 Two things to know:
 
 - uosc was cloned from source, not installed from its release zip, so the compiled
@@ -212,3 +214,16 @@ The optional `thumbfast` helper is not installed, so uosc logs one harmless mess
   `config/scripts/touch-gestures.lua` (the two `seek -10` / `seek 10` lines) if you want it smaller.
 - Left or right half is decided when the swipe is first recognised (after about 10 px of
   movement), not at the exact point the finger touched down.
+
+## Licence
+
+This repository mixes my own files with other people's, so there is no single licence for all of it.
+
+- **My files** (the scripts and config I wrote, `config/vs/pan-interp.vpy`, `scripts/`, `lsfg/`, this
+  README) are under the MIT licence: see `LICENSE`.
+- **Other people's files keep their own licences**, listed in `THIRD_PARTY_NOTICES.md`, with the full texts
+  in `LICENSES/`: uosc (LGPL-2.1), mpv-touch-gestures and mpv-pointer-event (GPL-2.0, and
+  my modified `touch-gestures.lua` and the changed `.conf` files are therefore GPL-2.0 too), and the
+  five shaders (MIT, LGPL-3.0-or-later and BSD-style, each with its notice in the file).
+- They are separate files side by side, not one combined program, so each file stays under its own
+  licence. I read the licence texts and file headers; this is not legal advice.
