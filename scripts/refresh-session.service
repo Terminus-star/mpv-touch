@@ -1,0 +1,19 @@
+# systemd user unit for scripts/refresh-session.sh watch: if a program that asked for the matched refresh
+# rate dies without releasing it (crash, kill -9), restore the previous display mode.
+# Install (copy, not link: the file must exist at login):
+#   cp /home/termis/Projects/mpv-touch/scripts/refresh-session.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now refresh-session.service
+[Unit]
+Description=Matched refresh rate while a 23.976 fps video plays: drop dead requests and restore the display mode
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/termis/Projects/mpv-touch/scripts/refresh-session.sh watch
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

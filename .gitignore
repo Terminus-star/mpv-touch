@@ -1,0 +1,4 @@
+# vendor/ holds untouched clones of the upstream projects the files in config/ were copied from
+# (uosc, mpv-pointer-event, mpv-touch-gestures). Each has its own .git and can be cloned again, so it
+# is not part of this repository; the README lists where they come from.
+vendor/

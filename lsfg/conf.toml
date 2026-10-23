@@ -1,0 +1,28 @@
+version = 1
+
+# Used only by scripts/run-lsfg.sh (through LSFG_CONFIG). Your own ~/.config/lsfg-vk/conf.toml,
+# managed by the Decky plugin, is not touched.
+
+[global]
+# Lossless Scaling's DLL, from the Windows Steam library. The path in ~/.config/lsfg-vk/conf.toml
+# (/games/Lossless Scaling/Lossless.dll) does not exist on this machine.
+dll = "/mnt/windows/Program Files (x86)/Steam/steamapps/common/Lossless Scaling/Lossless.dll"
+
+# half-precision maths: faster and lighter on this GPU
+no_fp16 = false
+
+[[game]]
+# matched against the program name, so this applies to mpv only
+exe = "mpv"
+
+# 2 = the least that helps: 23.976 fps becomes 47.95 fps. Raise it only if motion still looks choppy.
+multiplier = 2
+
+# how much of the picture is analysed for motion. Lower = lighter on the GPU but rougher motion
+# estimates (0.5 to 1.0). Fine detail like anime line art may prefer a higher value.
+flow_scale = 0.8
+
+# a lighter model: less GPU power, lower quality. false = the full model.
+performance_mode = false
+
+experimental_present_mode = "fifo"

@@ -1,0 +1,13 @@
+[Unit]
+Description=HDR on while an HDR program runs: drop dead requests, notice gamescope --hdr-enabled
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/termis/Projects/mpv-touch/scripts/hdr-session.sh watch
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
